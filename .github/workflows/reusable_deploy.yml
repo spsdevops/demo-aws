@@ -255,12 +255,12 @@ jobs:
       # Crear bucket si no existe
       - name: "Crear bucket si no existe"
         run: |
-          aws s3api head-bucket --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}" 2>/dev/null || aws s3 mb s3://${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}-dem
+          aws s3api head-bucket --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}-dem" 2>/dev/null || aws s3 mb s3://${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}-dem
           echo "Habilitando versionamiento"
           aws s3api put-bucket-versioning --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}-dem" --versioning-configuration Status=Enabled || echo "No se pudo realizar la operación"
           REGION_DR="${{inputs.region_dr}}"
           if [[ -n $REGION_DR ]]; then echo bucket dr; fi
-          if [[ -n $REGION_DR ]]; then aws s3api head-bucket --region ${{inputs.region_dr}} --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-dr-${{inputs.region_dr}}-dem" 2>/dev/null || aws s3 mb s3://${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-dr-${{inputs.region_dr}} --region ${{inputs.region_dr}}; fi
+          if [[ -n $REGION_DR ]]; then aws s3api head-bucket --region ${{inputs.region_dr}} --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-dr-${{inputs.region_dr}}-dem" 2>/dev/null || aws s3 mb s3://${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-dr-${{inputs.region_dr}}-dem --region ${{inputs.region_dr}}; fi
           if [[ -n $REGION_DR ]]; then aws s3api put-bucket-versioning --region ${{inputs.region_dr}} --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-dr-${{inputs.region_dr}}-dem" --versioning-configuration Status=Enabled;  fi
 
 
