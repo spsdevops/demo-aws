@@ -255,7 +255,7 @@ jobs:
       # Crear bucket si no existe
       - name: "Crear bucket si no existe"
         run: |
-          aws s3api head-bucket --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}" 2>/dev/null || aws s3 mb s3://${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}
+          aws s3api head-bucket --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}" 2>/dev/null || aws s3 mb s3://${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}-demo
           echo "Habilitando versionamiento"
           aws s3api put-bucket-versioning --bucket "${{fromJson(steps.read_json.outputs.pfgSamJSON).sam_bucket}}-${{env.samEnv}}-${{inputs.region}}" --versioning-configuration Status=Enabled || echo "No se pudo realizar la operación"
           REGION_DR="${{inputs.region_dr}}"
