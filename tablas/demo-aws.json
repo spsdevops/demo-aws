@@ -1,12 +1,12 @@
 {"Actualizaciones": [{
   "ID": {
-    "S": "int-afore-sec-custom-mtm-chklst"
+    "S": "demo-aws"
   },
   "API": {
     "L": []
   },
   "NEGOCIO": {
-    "S": "NEGOCIO2"
+    "S": "DUMMY"
   },
   "ARCHIVOS": {
     "L": [
