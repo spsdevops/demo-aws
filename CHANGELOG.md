@@ -1,6 +1,6 @@
 # Proceso
 ### Funcionalidades nuevas
-- 
+- Se coloca mensaje en español
 
 ### Solución a problemas
 - 
